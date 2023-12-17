@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Блог{% endblock %}
+
+{% block content %}
+    <h2>Create Blog Post</h2>
+     <form method="post" action="{% url 'create_blogpost' %}">
+         {% csrf_token %}
+         {{ form.title.label_tag }} {{ form.title }}
+         <br><br>
+         {{ form.content.label_tag }} {{ form.content }}
+         <br>
+         <input type="hidden" name="author" value="{{ user.id }}" />
+         <br>
+         <button type="submit">Create Blog Post</button>
+    </form>
+{% endblock %}
